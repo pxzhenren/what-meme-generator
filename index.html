@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Random Meme</title>
+  <style>
+    body {
+      background: #111;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 75vh;
+      border-radius: 16px;
+      margin: 20px 0;
+    }
+
+    button {
+      padding: 12px 20px;
+      font-size: 18px;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Random Meme</h1>
+
+  <img id="meme" src="memes/meme1.jpg" alt="random meme">
+
+  <br>
+
+  <button onclick="showRandomMeme()">Show another meme</button>
+
+  <script>
+    const memes = [
+      "memes/meme1.png",
+      "memes/meme2.png",
+      "memes/meme3.png",
+      "memes/meme4.png",
+      "memes/meme5.png",
+      "memes/meme6.png",
+      "memes/meme7.png",
+      "memes/meme8.png",
+      "memes/meme9.png",
+      "memes/meme10.png",
+      "memes/meme11.png",
+      "memes/meme12.png",
+      "memes/meme13.png",
+      "memes/meme14.png",
+      "memes/meme33.png",
+      "memes/memewa.png",
+      "memes/memewawa.png",
+      "memes/memexianzhe.png",
+    ];
+
+    function showRandomMeme() {
+      const randomIndex = Math.floor(Math.random() * memes.length);
+      document.getElementById("meme").src = memes[randomIndex];
+    }
+  </script>
+
+</body>
+</html>
