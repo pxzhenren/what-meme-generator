@@ -1,41 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Random Meme</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Random Meme Generator</title>
+
   <style>
     body {
+      margin: 0;
+      padding: 40px;
       background: #111;
       color: white;
       font-family: Arial, sans-serif;
       text-align: center;
-      padding: 40px;
     }
 
-    img {
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #meme {
       max-width: 90%;
-      max-height: 75vh;
+      max-height: 70vh;
       border-radius: 16px;
-      margin: 20px 0;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      margin-bottom: 20px;
     }
 
     button {
-      padding: 12px 20px;
+      padding: 14px 24px;
       font-size: 18px;
-      border-radius: 10px;
       border: none;
+      border-radius: 12px;
       cursor: pointer;
+      background: white;
+      color: black;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
+
 <body>
 
-  <h1>Random Meme</h1>
+  <h1>🎲 Random Meme Generator</h1>
 
-  <img id="meme" src="memes/meme1.jpg" alt="random meme">
+  <img id="meme" src="" alt="Random Meme" />
 
-  <br>
+  <br />
 
-  <button onclick="showRandomMeme()">Show another meme</button>
+  <button onclick="nextMeme()">
+    Next Meme
+  </button>
 
   <script>
     const memes = [
@@ -56,13 +76,35 @@
       "memes/meme33.png",
       "memes/memewa.png",
       "memes/memewawa.png",
-      "memes/memexianzhe.png",
+      "memes/memexianzhe.png"
     ];
 
-    function showRandomMeme() {
-      const randomIndex = Math.floor(Math.random() * memes.length);
-      document.getElementById("meme").src = memes[randomIndex];
+    let shuffledMemes = [];
+    let currentIndex = 0;
+
+    function shuffleArray(array) {
+      return [...array].sort(() => Math.random() - 0.5);
     }
+
+    function nextMeme() {
+
+      // reshuffle after all memes shown
+      if (currentIndex >= shuffledMemes.length) {
+        shuffledMemes = shuffleArray(memes);
+        currentIndex = 0;
+      }
+
+      document.getElementById("meme").src =
+        shuffledMemes[currentIndex];
+
+      currentIndex++;
+    }
+
+    // initial shuffle
+    shuffledMemes = shuffleArray(memes);
+
+    // show first meme automatically
+    nextMeme();
   </script>
 
 </body>
